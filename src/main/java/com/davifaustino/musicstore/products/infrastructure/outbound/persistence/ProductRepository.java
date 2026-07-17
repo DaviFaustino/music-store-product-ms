@@ -6,20 +6,20 @@ import org.springframework.stereotype.Component;
 @Component
 public class ProductRepository {
 
-    private final JpaProductRepository jpaProductRepository;
+    private final MongoProductRepository mongoProductRepository;
     private final ProductPersistenceMapper productPersistenceMapper;
 
     public ProductRepository(
-            JpaProductRepository jpaProductRepository,
+            MongoProductRepository mongoProductRepository,
             ProductPersistenceMapper productPersistenceMapper
     ) {
-        this.jpaProductRepository = jpaProductRepository;
+        this.mongoProductRepository = mongoProductRepository;
         this.productPersistenceMapper = productPersistenceMapper;
     }
     
     public Product save(Product product) {
         ProductEntity productEntity = productPersistenceMapper.toEntity(product);
-        ProductEntity savedProduct = jpaProductRepository.save(productEntity);
+        ProductEntity savedProduct = mongoProductRepository.save(productEntity);
 
         return productPersistenceMapper.toDomain(savedProduct);
     }

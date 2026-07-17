@@ -1,12 +1,23 @@
 package com.davifaustino.musicstore.products.domain.valueobject;
 
-public record ProductId(String value) {
+import java.util.Objects;
+import java.util.UUID;
+
+public record ProductId(UUID value) {
 
     public ProductId {
-        if (value == null || value.isBlank()) {
-            throw new IllegalArgumentException("product id must not be blank");
-        }
+        Objects.requireNonNull(value, "product id must not be null");
+    }
 
-        value = value.trim();
+    public static ProductId newId() {
+        return new ProductId(UUID.randomUUID());
+    }
+
+    public static ProductId fromString(String value) {
+        return new ProductId(UUID.fromString(value));
+    }
+
+    public String asString() {
+        return value.toString();
     }
 }

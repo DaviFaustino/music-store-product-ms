@@ -11,6 +11,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.math.BigDecimal;
+import java.util.UUID;
 
 @Document(collection = "products")
 @Data
@@ -19,7 +20,7 @@ import java.math.BigDecimal;
 public class ProductEntity {
 
     @Id
-    private String id;
+    private UUID id;
     private String sku;
     private String name;
     private String description;

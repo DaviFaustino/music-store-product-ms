@@ -28,7 +28,7 @@ public class ProductMapper {
 
     public Product toDomain(CreateProductRequest productRequest) {
         return new Product(
-                new ProductId(UUID.randomUUID().toString()),
+                new ProductId(UUID.randomUUID()),
                 new Sku(productRequest.sku()),
                 new ProductName(productRequest.name()),
                 productRequest.description(),
