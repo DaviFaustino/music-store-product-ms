@@ -2,4 +2,6 @@ spring:
     application:
         name: product
     mongodb:
-        uri: mongodb://localhost:27017/product
+        uri: mongodb://localhost:27017/product?replicaSet=rs0
+        representation:
+            uuid: standard
