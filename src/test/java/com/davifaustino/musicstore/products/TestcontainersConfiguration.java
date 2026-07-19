@@ -10,10 +10,12 @@ import org.testcontainers.utility.DockerImageName;
 @TestConfiguration(proxyBeanMethods = false)
 class TestcontainersConfiguration {
 
-	@Bean
+	@Bean(destroyMethod = "stop")
 	@ServiceConnection
+	@SuppressWarnings("resource")
 	MongoDBContainer mongoDbContainer() {
-		return new MongoDBContainer(DockerImageName.parse("mongo:latest"));
+		return new MongoDBContainer(DockerImageName.parse("mongo:latest"))
+				.withReplicaSet();
 	}
 
 	@Bean
