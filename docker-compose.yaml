@@ -4,10 +4,11 @@ services:
     container_name: product-db
     ports:
       - "27017:27017"
+    command: ["mongod", "--replSet", "rs0", "--bind_ip_all"]
     volumes:
       - product-db-data:/data/db
     healthcheck:
-      test: ["CMD", "mongosh", "--quiet", "--eval", "db.adminCommand('ping').ok"]
+      test: ["CMD-SHELL", "mongosh --quiet --eval 'try { rs.status().ok } catch (e) { rs.initiate({_id: \"rs0\", members: [{ _id: 0, host: \"localhost:27017\" }] }).ok }'"]
       interval: 10s
       timeout: 5s
       retries: 5
