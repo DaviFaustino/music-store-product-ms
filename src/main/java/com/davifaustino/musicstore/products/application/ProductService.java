@@ -41,6 +41,7 @@ public class ProductService {
             savedProduct.getName().value(),
             savedProduct.getDescription(),
             savedProduct.getPrice().amount(),
+            savedProduct.getPrice().currency(),
             savedProduct.getStatus(),
             savedProduct.getType()
         );

@@ -17,6 +17,7 @@ public class ProductPersistenceMapper {
                 product.getName().value(),
                 product.getDescription(),
                 product.getPrice().amount(),
+                product.getPrice().currency(),
                 product.getStatus(),
                 product.getDetails()
         );
@@ -28,7 +29,7 @@ public class ProductPersistenceMapper {
                 new Sku(productEntity.getSku()),
                 new ProductName(productEntity.getName()),
                 productEntity.getDescription(),
-                new Money(productEntity.getPrice()),
+                new Money(productEntity.getPrice(), productEntity.getCurrency()),
                 productEntity.getStatus(),
                 productEntity.getDetails()
         );

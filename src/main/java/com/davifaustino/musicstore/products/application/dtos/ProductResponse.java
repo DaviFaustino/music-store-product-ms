@@ -13,6 +13,7 @@ public record ProductResponse(
         String name,
         String description,
         BigDecimal price,
+        String currency,
         ProductStatus status,
         ProductType type,
         ProductDetails details) {

@@ -32,7 +32,7 @@ public class ProductMapper {
                 new Sku(productRequest.sku()),
                 new ProductName(productRequest.name()),
                 productRequest.description(),
-                new Money(productRequest.price()),
+                new Money(productRequest.price(), productRequest.currency()),
                 toDetails(productRequest.type(), productRequest.details())
         );
     }
@@ -44,6 +44,7 @@ public class ProductMapper {
                 product.getName().value(),
                 product.getDescription(),
                 product.getPrice().amount(),
+                product.getPrice().currency(),
                 product.getStatus(),
                 product.getType(),
                 product.getDetails()

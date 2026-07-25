@@ -22,6 +22,7 @@ public record CreateProductRequest(
         String sku,
         String description,
         BigDecimal price,
+        String currency,
         @JsonTypeInfo(
                 use = JsonTypeInfo.Id.NAME,
                 include = JsonTypeInfo.As.EXTERNAL_PROPERTY,

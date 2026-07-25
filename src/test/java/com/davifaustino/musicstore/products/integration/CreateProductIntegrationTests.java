@@ -54,6 +54,7 @@ class CreateProductIntegrationTests extends IntegrationTests {
 					"sku": "vin-001",
 					"description": "Classic jazz vinyl",
 					"price": 39.90,
+					"currency": "USD",
 					"details": {
 						"artist": "Miles Davis",
 						"albumTitle": "Kind of Blue",
@@ -78,6 +79,7 @@ class CreateProductIntegrationTests extends IntegrationTests {
         assertThat(response.body()).contains("\"name\":\"Kind of Blue\"");
         assertThat(response.body()).contains("\"description\":\"Classic jazz vinyl\"");
         assertThat(response.body()).contains("\"price\":39.90");
+        assertThat(response.body()).contains("\"currency\":\"USD\"");
         assertThat(response.body()).contains("\"status\":\"ACTIVE\"");
         assertThat(response.body()).contains("\"type\":\"VINYL\"");
         assertThat(response.body()).contains("\"artist\":\"Miles Davis\"");
@@ -98,6 +100,7 @@ class CreateProductIntegrationTests extends IntegrationTests {
 					"sku": "acc-010",
 					"description": "Nickel wound electric guitar strings",
 					"price": 12.50,
+					"currency": "USD",
 					"details": {
 						"accessoryType": "Strings",
 						"compatibleWith": ["Electric guitar", "Stratocaster"],
@@ -115,6 +118,7 @@ class CreateProductIntegrationTests extends IntegrationTests {
 
         assertThat(response.body()).contains("\"id\":\"");
         assertThat(response.body()).contains("\"sku\":\"ACC-010\"");
+        assertThat(response.body()).contains("\"currency\":\"USD\"");
         assertThat(response.body()).contains("\"type\":\"ACCESSORY\"");
         assertThat(response.body()).contains("\"accessoryType\":\"Strings\"");
         assertThat(response.body()).contains("\"compatibleWith\":[\"Electric guitar\",\"Stratocaster\"]");
@@ -133,6 +137,7 @@ class CreateProductIntegrationTests extends IntegrationTests {
 					"sku": "acc-010",
 					"description": "Nickel wound electric guitar strings",
 					"price": 12.50,
+					"currency": "USD",
 					"details": {
 						"accessoryType": "Strings",
 						"compatibleWith": ["Electric guitar", "Stratocaster"],
@@ -175,6 +180,7 @@ class CreateProductIntegrationTests extends IntegrationTests {
 					"sku": "book-001",
 					"description": "Unsupported product type",
 					"price": 49.90,
+					"currency": "USD",
 					"details": {}
                 }
                 """;
@@ -210,6 +216,7 @@ class CreateProductIntegrationTests extends IntegrationTests {
 					"sku": " ",
 					"description": "Nickel wound electric guitar strings",
 					"price": 12.50,
+					"currency": "USD",
 					"details": {
 						"accessoryType": "Strings",
 						"compatibleWith": ["Electric guitar"],
@@ -234,6 +241,7 @@ class CreateProductIntegrationTests extends IntegrationTests {
 					"sku": "acc-010",
 					"description": "Nickel wound electric guitar strings",
 					"price": 0,
+					"currency": "USD",
 					"details": {
 						"accessoryType": "Strings",
 						"compatibleWith": ["Electric guitar"],
@@ -258,6 +266,7 @@ class CreateProductIntegrationTests extends IntegrationTests {
 					"sku": "vin-001",
 					"description": "Classic jazz vinyl",
 					"price": 39.90,
+					"currency": "USD",
 					"details": {
 						"artist": "Miles Davis",
 						"albumTitle": "Kind of Blue",

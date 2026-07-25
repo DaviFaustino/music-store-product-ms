@@ -7,6 +7,7 @@ import com.davifaustino.musicstore.products.domain.valueobject.ProductId;
 import com.davifaustino.musicstore.products.domain.valueobject.ProductName;
 import com.davifaustino.musicstore.products.domain.valueobject.Sku;
 
+import java.math.BigDecimal;
 import java.util.Objects;
 
 public class Product {
@@ -43,7 +44,7 @@ public class Product {
         this.sku = Objects.requireNonNull(sku, "sku must not be null");
         this.name = Objects.requireNonNull(name, "name must not be null");
         this.description = description;
-        this.price = Objects.requireNonNull(price, "price must not be null");
+        this.price = requirePositivePrice(price);
         this.status = Objects.requireNonNull(status, "status must not be null");
         this.details = Objects.requireNonNull(details, "details must not be null");
     }
@@ -78,5 +79,15 @@ public class Product {
 
     public ProductType getType() {
         return details.type();
+    }
+
+    private Money requirePositivePrice(Money price) {
+        Objects.requireNonNull(price, "price must not be null");
+
+        if (price.amount().compareTo(BigDecimal.ZERO) <= 0) {
+            throw new IllegalArgumentException("amount must be greater than zero");
+        }
+
+        return price;
     }
 }
